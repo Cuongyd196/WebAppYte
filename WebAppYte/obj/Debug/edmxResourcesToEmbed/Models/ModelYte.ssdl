@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebAppYteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'WebAppYte.dbo.LichKham' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LichKham">
+    <Key>
+      <PropertyRef Name="IDLichKham" />
+    </Key>
+    <Property Name="IDLichKham" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChuDe" Type="nvarchar" MaxLength="100" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="300" />
+    <Property Name="BatDau" Type="datetime" />
+    <Property Name="KetThuc" Type="datetime" />
+    <Property Name="GiaoDien" Type="nvarchar" MaxLength="10" />
+    <Property Name="LaCaNgay" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'WebAppYte.dbo.Solieucovid' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Solieucovid">
+    <Key>
+      <PropertyRef Name="IDThongkecovid" />
+    </Key>
+    <Property Name="IDThongkecovid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quocgia" Type="nvarchar" MaxLength="50" />
+    <Property Name="Socanhiem" Type="int" />
+    <Property Name="Dangdieutri" Type="int" />
+    <Property Name="Khoi" Type="int" />
+    <Property Name="Tuvong" Type="int" />
+    <Property Name="Ghichu" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'WebAppYte.dbo.Tintuc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Tintuc">
+    <Key>
+      <PropertyRef Name="IDTintuc" />
+    </Key>
+    <Property Name="IDTintuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tieude" Type="nvarchar(max)" />
+    <Property Name="Noidung" Type="nvarchar(max)" />
+    <Property Name="Hinhanh" Type="nvarchar" MaxLength="100" />
+    <Property Name="Mota" Type="nvarchar(max)" />
+    <Property Name="Ngaydang" Type="smalldatetime" />
+  </EntityType>
+  <EntityContainer Name="WebAppYteModelStoreContainer">
+    <EntitySet Name="LichKham" EntityType="Self.LichKham" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LichKham].[IDLichKham] AS [IDLichKham], 
+    [LichKham].[ChuDe] AS [ChuDe], 
+    [LichKham].[MoTa] AS [MoTa], 
+    [LichKham].[BatDau] AS [BatDau], 
+    [LichKham].[KetThuc] AS [KetThuc], 
+    [LichKham].[GiaoDien] AS [GiaoDien], 
+    [LichKham].[LaCaNgay] AS [LaCaNgay]
+    FROM [dbo].[LichKham] AS [LichKham]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Solieucovid" EntityType="Self.Solieucovid" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Solieucovid].[IDThongkecovid] AS [IDThongkecovid], 
+    [Solieucovid].[Quocgia] AS [Quocgia], 
+    [Solieucovid].[Socanhiem] AS [Socanhiem], 
+    [Solieucovid].[Dangdieutri] AS [Dangdieutri], 
+    [Solieucovid].[Khoi] AS [Khoi], 
+    [Solieucovid].[Tuvong] AS [Tuvong], 
+    [Solieucovid].[Ghichu] AS [Ghichu]
+    FROM [dbo].[Solieucovid] AS [Solieucovid]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Tintuc" EntityType="Self.Tintuc" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Tintuc].[IDTintuc] AS [IDTintuc], 
+    [Tintuc].[Tieude] AS [Tieude], 
+    [Tintuc].[Noidung] AS [Noidung], 
+    [Tintuc].[Hinhanh] AS [Hinhanh], 
+    [Tintuc].[Mota] AS [Mota], 
+    [Tintuc].[Ngaydang] AS [Ngaydang]
+    FROM [dbo].[Tintuc] AS [Tintuc]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

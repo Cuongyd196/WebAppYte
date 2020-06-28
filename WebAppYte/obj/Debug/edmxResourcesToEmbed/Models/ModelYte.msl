@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebAppYteModelStoreContainer" CdmEntityContainer="WebAppYteEntities">
+    <EntitySetMapping Name="LichKhams">
+      <EntityTypeMapping TypeName="WebAppYteModel.LichKham">
+        <MappingFragment StoreEntitySet="LichKham">
+          <ScalarProperty Name="IDLichKham" ColumnName="IDLichKham" />
+          <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="BatDau" ColumnName="BatDau" />
+          <ScalarProperty Name="KetThuc" ColumnName="KetThuc" />
+          <ScalarProperty Name="GiaoDien" ColumnName="GiaoDien" />
+          <ScalarProperty Name="LaCaNgay" ColumnName="LaCaNgay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Solieucovids">
+      <EntityTypeMapping TypeName="WebAppYteModel.Solieucovid">
+        <MappingFragment StoreEntitySet="Solieucovid">
+          <ScalarProperty Name="IDThongkecovid" ColumnName="IDThongkecovid" />
+          <ScalarProperty Name="Quocgia" ColumnName="Quocgia" />
+          <ScalarProperty Name="Socanhiem" ColumnName="Socanhiem" />
+          <ScalarProperty Name="Dangdieutri" ColumnName="Dangdieutri" />
+          <ScalarProperty Name="Khoi" ColumnName="Khoi" />
+          <ScalarProperty Name="Tuvong" ColumnName="Tuvong" />
+          <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tintucs">
+      <EntityTypeMapping TypeName="WebAppYteModel.Tintuc">
+        <MappingFragment StoreEntitySet="Tintuc">
+          <ScalarProperty Name="IDTintuc" ColumnName="IDTintuc" />
+          <ScalarProperty Name="Tieude" ColumnName="Tieude" />
+          <ScalarProperty Name="Noidung" ColumnName="Noidung" />
+          <ScalarProperty Name="Hinhanh" ColumnName="Hinhanh" />
+          <ScalarProperty Name="Mota" ColumnName="Mota" />
+          <ScalarProperty Name="Ngaydang" ColumnName="Ngaydang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

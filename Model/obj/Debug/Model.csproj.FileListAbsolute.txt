@@ -1,0 +1,11 @@
+E:\Code\Web\WebAppYte\Model\bin\Debug\Model.dll.config
+E:\Code\Web\WebAppYte\Model\bin\Debug\Model.dll
+E:\Code\Web\WebAppYte\Model\bin\Debug\Model.pdb
+E:\Code\Web\WebAppYte\Model\bin\Debug\EntityFramework.dll
+E:\Code\Web\WebAppYte\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\Code\Web\WebAppYte\Model\bin\Debug\EntityFramework.xml
+E:\Code\Web\WebAppYte\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\Code\Web\WebAppYte\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\Code\Web\WebAppYte\Model\obj\Debug\Model.csproj.CopyComplete
+E:\Code\Web\WebAppYte\Model\obj\Debug\Model.dll
+E:\Code\Web\WebAppYte\Model\obj\Debug\Model.pdb

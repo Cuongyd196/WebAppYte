@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WebAppYteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WebAppYte.dbo.LichKham' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LichKham">
+          <Key>
+            <PropertyRef Name="IDLichKham" />
+          </Key>
+          <Property Name="IDLichKham" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChuDe" Type="nvarchar" MaxLength="100" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="300" />
+          <Property Name="BatDau" Type="datetime" />
+          <Property Name="KetThuc" Type="datetime" />
+          <Property Name="GiaoDien" Type="nvarchar" MaxLength="10" />
+          <Property Name="LaCaNgay" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WebAppYte.dbo.Solieucovid' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Solieucovid">
+          <Key>
+            <PropertyRef Name="IDThongkecovid" />
+          </Key>
+          <Property Name="IDThongkecovid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quocgia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Socanhiem" Type="int" />
+          <Property Name="Dangdieutri" Type="int" />
+          <Property Name="Khoi" Type="int" />
+          <Property Name="Tuvong" Type="int" />
+          <Property Name="Ghichu" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WebAppYte.dbo.Tintuc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tintuc">
+          <Key>
+            <PropertyRef Name="IDTintuc" />
+          </Key>
+          <Property Name="IDTintuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tieude" Type="nvarchar(max)" />
+          <Property Name="Noidung" Type="nvarchar(max)" />
+          <Property Name="Hinhanh" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mota" Type="nvarchar(max)" />
+          <Property Name="Ngaydang" Type="smalldatetime" />
+        </EntityType>
+        <EntityContainer Name="WebAppYteModelStoreContainer">
+          <EntitySet Name="LichKham" EntityType="Self.LichKham" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LichKham].[IDLichKham] AS [IDLichKham], 
+    [LichKham].[ChuDe] AS [ChuDe], 
+    [LichKham].[MoTa] AS [MoTa], 
+    [LichKham].[BatDau] AS [BatDau], 
+    [LichKham].[KetThuc] AS [KetThuc], 
+    [LichKham].[GiaoDien] AS [GiaoDien], 
+    [LichKham].[LaCaNgay] AS [LaCaNgay]
+    FROM [dbo].[LichKham] AS [LichKham]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Solieucovid" EntityType="Self.Solieucovid" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Solieucovid].[IDThongkecovid] AS [IDThongkecovid], 
+    [Solieucovid].[Quocgia] AS [Quocgia], 
+    [Solieucovid].[Socanhiem] AS [Socanhiem], 
+    [Solieucovid].[Dangdieutri] AS [Dangdieutri], 
+    [Solieucovid].[Khoi] AS [Khoi], 
+    [Solieucovid].[Tuvong] AS [Tuvong], 
+    [Solieucovid].[Ghichu] AS [Ghichu]
+    FROM [dbo].[Solieucovid] AS [Solieucovid]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tintuc" EntityType="Self.Tintuc" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tintuc].[IDTintuc] AS [IDTintuc], 
+    [Tintuc].[Tieude] AS [Tieude], 
+    [Tintuc].[Noidung] AS [Noidung], 
+    [Tintuc].[Hinhanh] AS [Hinhanh], 
+    [Tintuc].[Mota] AS [Mota], 
+    [Tintuc].[Ngaydang] AS [Ngaydang]
+    FROM [dbo].[Tintuc] AS [Tintuc]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebAppYteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LichKham">
+          <Key>
+            <PropertyRef Name="IDLichKham" />
+          </Key>
+          <Property Name="IDLichKham" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="BatDau" Type="DateTime" Precision="3" />
+          <Property Name="KetThuc" Type="DateTime" Precision="3" />
+          <Property Name="GiaoDien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="LaCaNgay" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Solieucovid">
+          <Key>
+            <PropertyRef Name="IDThongkecovid" />
+          </Key>
+          <Property Name="IDThongkecovid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quocgia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Socanhiem" Type="Int32" />
+          <Property Name="Dangdieutri" Type="Int32" />
+          <Property Name="Khoi" Type="Int32" />
+          <Property Name="Tuvong" Type="Int32" />
+          <Property Name="Ghichu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tintuc">
+          <Key>
+            <PropertyRef Name="IDTintuc" />
+          </Key>
+          <Property Name="IDTintuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tieude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Hinhanh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ngaydang" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="WebAppYteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LichKhams" EntityType="Self.LichKham" />
+          <EntitySet Name="Solieucovids" EntityType="Self.Solieucovid" />
+          <EntitySet Name="Tintucs" EntityType="Self.Tintuc" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebAppYteModelStoreContainer" CdmEntityContainer="WebAppYteEntities">
+          <EntitySetMapping Name="LichKhams">
+            <EntityTypeMapping TypeName="WebAppYteModel.LichKham">
+              <MappingFragment StoreEntitySet="LichKham">
+                <ScalarProperty Name="IDLichKham" ColumnName="IDLichKham" />
+                <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="BatDau" ColumnName="BatDau" />
+                <ScalarProperty Name="KetThuc" ColumnName="KetThuc" />
+                <ScalarProperty Name="GiaoDien" ColumnName="GiaoDien" />
+                <ScalarProperty Name="LaCaNgay" ColumnName="LaCaNgay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Solieucovids">
+            <EntityTypeMapping TypeName="WebAppYteModel.Solieucovid">
+              <MappingFragment StoreEntitySet="Solieucovid">
+                <ScalarProperty Name="IDThongkecovid" ColumnName="IDThongkecovid" />
+                <ScalarProperty Name="Quocgia" ColumnName="Quocgia" />
+                <ScalarProperty Name="Socanhiem" ColumnName="Socanhiem" />
+                <ScalarProperty Name="Dangdieutri" ColumnName="Dangdieutri" />
+                <ScalarProperty Name="Khoi" ColumnName="Khoi" />
+                <ScalarProperty Name="Tuvong" ColumnName="Tuvong" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tintucs">
+            <EntityTypeMapping TypeName="WebAppYteModel.Tintuc">
+              <MappingFragment StoreEntitySet="Tintuc">
+                <ScalarProperty Name="IDTintuc" ColumnName="IDTintuc" />
+                <ScalarProperty Name="Tieude" ColumnName="Tieude" />
+                <ScalarProperty Name="Noidung" ColumnName="Noidung" />
+                <ScalarProperty Name="Hinhanh" ColumnName="Hinhanh" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="Ngaydang" ColumnName="Ngaydang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

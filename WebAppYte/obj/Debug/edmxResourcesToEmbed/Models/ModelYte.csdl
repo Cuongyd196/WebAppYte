@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebAppYteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LichKham">
+    <Key>
+      <PropertyRef Name="IDLichKham" />
+    </Key>
+    <Property Name="IDLichKham" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="BatDau" Type="DateTime" Precision="3" />
+    <Property Name="KetThuc" Type="DateTime" Precision="3" />
+    <Property Name="GiaoDien" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LaCaNgay" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Solieucovid">
+    <Key>
+      <PropertyRef Name="IDThongkecovid" />
+    </Key>
+    <Property Name="IDThongkecovid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Quocgia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Socanhiem" Type="Int32" />
+    <Property Name="Dangdieutri" Type="Int32" />
+    <Property Name="Khoi" Type="Int32" />
+    <Property Name="Tuvong" Type="Int32" />
+    <Property Name="Ghichu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tintuc">
+    <Key>
+      <PropertyRef Name="IDTintuc" />
+    </Key>
+    <Property Name="IDTintuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tieude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Hinhanh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ngaydang" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="WebAppYteEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LichKhams" EntityType="Self.LichKham" />
+    <EntitySet Name="Solieucovids" EntityType="Self.Solieucovid" />
+    <EntitySet Name="Tintucs" EntityType="Self.Tintuc" />
+  </EntityContainer>
+</Schema>

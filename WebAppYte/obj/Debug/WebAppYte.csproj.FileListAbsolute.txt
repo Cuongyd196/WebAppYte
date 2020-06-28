@@ -72,8 +72,12 @@ E:\Code\Web\WebAppYte\WebAppYte\bin\System.Web.WebPages.Razor.xml
 E:\Code\Web\WebAppYte\WebAppYte\bin\Newtonsoft.Json.xml
 E:\Code\Web\WebAppYte\WebAppYte\bin\Antlr3.Runtime.pdb
 E:\Code\Web\WebAppYte\WebAppYte\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Code\Web\WebAppYte\WebAppYte\obj\Debug\WebAppYte.csprojAssemblyReference.cache
 E:\Code\Web\WebAppYte\WebAppYte\obj\Debug\WebAppYte.csproj.CoreCompileInputs.cache
 E:\Code\Web\WebAppYte\WebAppYte\obj\Debug\WebAppYte.csproj.CopyComplete
 E:\Code\Web\WebAppYte\WebAppYte\obj\Debug\WebAppYte.dll
 E:\Code\Web\WebAppYte\WebAppYte\obj\Debug\WebAppYte.pdb
+E:\Code\Web\WebAppYte\WebAppYte\bin\EntityFramework.dll
+E:\Code\Web\WebAppYte\WebAppYte\bin\EntityFramework.SqlServer.dll
+E:\Code\Web\WebAppYte\WebAppYte\bin\EntityFramework.xml
+E:\Code\Web\WebAppYte\WebAppYte\bin\EntityFramework.SqlServer.xml
+E:\Code\Web\WebAppYte\WebAppYte\obj\Debug\WebAppYte.csprojAssemblyReference.cache
