@@ -15,6 +15,11 @@ namespace WebAppYte.Controllers
             var solieu = db.Solieucovids.ToList();
             return View(solieu);
         }
+        public ActionResult Index2()
+        {
+            var solieu = db.Solieucovids.ToList();
+            return View(solieu);
+        }
         public ActionResult Trangchu()
         {
             return View();

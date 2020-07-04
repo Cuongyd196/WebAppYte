@@ -1,76 +1,145 @@
-﻿
+﻿@model PagedList.IPagedList<WebAppYte.Models.LichKham>
+@using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style type="text/css">
+    .imgavt {
+        margin-right: 15px;
+    }
+</style>
 
-<h2>Index</h2>
+<h2>Lịch khám của bạn</h2>
 
+<p>
+    @Html.ActionLink("Đặt mới", "Create")
+</p>
 
-<div id="calendar"> </div>
-@*<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.min.css" rel="stylesheet" media="print" />*@
-@section Scripts{
-    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/gcal.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>  *@
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.0.1/main.min.js"></script>
+<div style="float:left">
+    <div class="col-md-8">
+        @foreach (var item in Model)
+        {
+            <img class="imgavt" src="~/images/images/avatar.jpg" width="170" height="170" style="float:left" />
 
+            <b>Người đặt lịch: @item.NguoiDung.HoTen</b>
+            <h4>Bác sĩ tư vấn: @item.QuanTri.HoTen</h4>
+            <h4>Hẹn vào lúc: @item.BatDau</h4>
+            <h4>Nội dung tư vấn : @item.ChuDe</h4>
 
-    <script>
-
-        $(document).ready(function () {
-            var events = [];
-            console.log('11111', events)
-            $.ajax({
-                url: '/LichKham/GetEvents',
-                type: "GET",
-                dataType: "JSON",
-                success: function (data) {
-                    $.each(data, function (i, v) {
-                        events.push(
-                            {
-                                title: v.ChuDe,
-                                description: v.MoTa,
-                                start: moment(v.BatDau),
-                                end: v.KetThuc != null ? moment(v.KetThuc) : null,
-                                themes: v.GiaoDien,
-                                is: v.LaCaNgay
-                            });
-                    })
-                    callback(events);
-                },
-                error: function (error) {
-                    alert('fail');
+            {
+                if (@item.TrangThai == 0)
+                {
+                    <h5 style="color:red">Trạng thái: Đang chờ xác nhận. </h5>
                 }
-            })
-
-            function callback(events) {
-                $('#calendar').fullCalendar({
-                    theme: true,
-                    timeFormat: 'h(:mm)a',
-                    header:
-                    {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
-                    },
-
-                    //defaultView: 'agendaDay',
-                    editable: false,
-                    events: events
-                });
+                else if (@item.TrangThai == 1)
+                {
+                    <h5 style="color:red">Trạng thái: Đã xác nhận lịch </h5>
+                }
+                else if (@item.TrangThai == 2)
+                {
+                    <h5 style="color:red">Trạng thái: Đã tư vấn xong. </h5>
+                }
+                else
+                {
+                    <h5 style="color:red">Trạng thái: Lỗi </h5>
+                }
 
             }
+            <h5>Thời gian tư vấn : 30 phút</h5>
+            <button>
+                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.IDLichKham })
+            </button>
+            <button>
+                @Html.ActionLink("Xóa lịch", "Delete", new { id = item.IDLichKham })
+            </button>
+            
+            <hr />
+        }
+    </div>
 
-        });
-
-    </script>
-
-}
-
-
+    <div class="col-md-4">
+        <h4> Tư vấn qua zoom</h4>
+        <img src="~/Common/images/zoom.png" class="img-responsive"/>
+    </div>
+</div>
 
 
 
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
 
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NguoiDung.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuanTri.TaiKhoan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChuDe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BatDau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KetThuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZoomInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KetQuaKham)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NguoiDung.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuanTri.TaiKhoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BatDau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KetThuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZoomInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KetQuaKham)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IDLichKham }) |
+                @Html.ActionLink("Details", "Details", new { id=item.IDLichKham }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IDLichKham })
+            </td>
+        </tr>
+    }
+
+    </table>*@

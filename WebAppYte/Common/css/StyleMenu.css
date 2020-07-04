@@ -29,7 +29,7 @@ body {
     z-index: 1000;
     position: fixed;
     left: 250px;
-    width: 250px;
+    width: 200px;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
@@ -78,12 +78,12 @@ body {
             }
 
 
-@media (max-width: 1025px){
+/*@media (max-width: 1025px){
     #sidebar {
         display: none !important
     }
 }
-
+*/
 .MauchuMenu {
     color:white
 }

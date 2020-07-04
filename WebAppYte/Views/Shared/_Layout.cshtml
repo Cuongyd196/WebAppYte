@@ -14,12 +14,17 @@
         .MauchuMenu {
             color: white
         }
+
         .navbar-inverse .navbar-nav > li > a {
             color: white;
             font-size: medium;
         }
+
         .navbar-brand {
             color: #4267B2
+        }
+        #sidebar {
+            width: 200px;
         }
     </style>
 
@@ -61,9 +66,57 @@
             @RenderBody()
             <hr />
         </div>
-        <div class="footer-a">
-            <p>&copy; @DateTime.Now.Year - CườngIT</p>
-        </div>
+        <footer class="bg-info" style="padding-left:50px">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <h2>Bảo hành</h2>
+                    <span>Chính sách mua hàng</span>
+                    <br />
+                    <span>Chính sách bảo hành</span>
+                    <br />
+                    <span>Trung tâm bảo hành</span>
+                    <br />
+                    <span>Tra cứu bảo hành</span>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h2>Liên kết</h2>
+                    <span>Tin tức Mobile</span>
+                    <br />
+                    <span>Lập trình Web</span>
+                    <br />
+                    <span>GenkVN</span>
+                    <br />
+                    <span>Dân trí</span>
+
+
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h2>Thông tin</h2>
+                    <span>Về chúng tôi</span>
+                    <br />
+                    <span>Liên hệ</span>
+                    <br />
+                    <span>Góp ý</span>
+                    <br />
+                    <span>Tra cứu</span>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h2>Theo dõi</h2>
+                    <span>Kênh youtube</span>
+                    <br />
+                    <span>Fanpage</span>
+                    <br />
+                    <span>Shopee</span>
+                    <br />
+                    <span>Group</span>
+
+                </div>
+            </div>
+            <hr />
+            <center> <p class="bg-primary">&copy; @DateTime.Now.Year - CườngIT</p></center>
+        </footer>
+
+
 
     }
     else
@@ -121,10 +174,16 @@
                             @Html.ActionLink("Danh sách bác sĩ", "Index", "Bacsi")
                         </li>
                         <li>
-                            @Html.ActionLink("Đặt lịch khám Video", "Index", "Lichkham")
+                            <a href="@Url.Action("Index", "LichKham", new { id = u.IDNguoiDung  })">
+                                Đặt lịch tư vấn VIDEO
+                            </a>
+                            @*@Html.ActionLink("Đặt lịch tư vấn Video", "Index", "LichKham")*@
                         </li>
                         <li>
-                            @Html.ActionLink("Lich Hẹn khám", "Chitiet", "Lichkham")
+                            <a href="@Url.Action("Index", "LichKham", new { id = u.IDNguoiDung  })">
+                                Đặt lịch khám trực tiếp
+                            </a>
+                            @*@Html.ActionLink("Đặt lịch khám trực tiếp", "Index", "LichKham")*@
                         </li>
                         <li>
                             @Html.ActionLink("Khai báo y tế", "Index", "TinTucs")

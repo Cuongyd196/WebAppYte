@@ -70,7 +70,7 @@ namespace WebAppYte.Controllers
                 hoiDap.TrangThai = 0;
                 db.HoiDaps.Add(hoiDap);
                 db.SaveChanges();
-                return RedirectToAction("listALL");
+                return RedirectToAction("Index","Hoidap" ,new { id = hoiDap.IDNguoiDung });
             }
 
             ViewBag.IDNguoiDung = new SelectList(db.NguoiDungs, "IDNguoiDung", "HoTen", hoiDap.IDNguoiDung);
