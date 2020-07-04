@@ -7,34 +7,221 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/fullcalendarcss")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Common/css/StyleMenu.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Common/Icon/css/all.css" rel="stylesheet" />
+    <style type="text/css">
+        .MauchuMenu {
+            color: white
+        }
+        .navbar-inverse .navbar-nav > li > a {
+            color: white;
+            font-size: medium;
+        }
+        .navbar-brand {
+            color: #4267B2
+        }
+    </style>
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Hỗ trợ y tế", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink(" Trang chủ", "Index", "Home")</li>
-                    <li>@Html.ActionLink(" Thông tin ", "About", "Home")</li>
-                    <li>@Html.ActionLink("Liên hệ", "Contact", "Home")</li>
-                </ul>
+    @using WebAppYte.Models
+    @{
+        var u = Session["user"] as WebAppYte.Models.NguoiDung;
+        var userBS = Session["userBS"] as WebAppYte.Models.QuanTri;
+    }
+    @if (u == null && userBS == null)
+    {
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#4267B2">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li> <img src="~/Common/images/YTE.jpg" width="100" height="50" alt=""></li>
+                        <li>@Html.ActionLink(" TRANG CHỦ ", "Index", "Home", null, new { @class = "MauchuMenu" })</li>
+                        <li>@Html.ActionLink(" ĐIỀU CẦN BIẾT ", "listAll", "Home", null, new { @class = "MauchuMenu" })</li>
+                        <li>@Html.ActionLink(" HỎI ĐÁP ONILNE", "listAll", "Hoidap", null, new { @class = "MauchuMenu" })</li>
+                        <li>@Html.ActionLink(" TRUNG TÂM GẦN NHẤT", "Index", "Trungtamyte", null, new { @class = "MauchuMenu" })</li>
+                        <li>@Html.ActionLink(" TIN TỨC", "Index", "Trungtamyte", null, new { @class = "MauchuMenu" })</li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li> @Html.ActionLink("Đăng kí", "Dangky", "Home", null, new { @class = "MauchuMenu" }) </li>
+                        <li> @Html.ActionLink("Đăng nhập", "Dangnhap", "Home", null, new { @class = "MauchuMenu" })</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+        </div>
+        <div class="footer-a">
             <p>&copy; @DateTime.Now.Year - CườngIT</p>
-        </footer>
-    </div>
+        </div>
+
+    }
+    else
+    {
+        if (u != null && userBS == null)
+        {
+            <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#4267B2">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li> <img src="~/Common/images/YTE.jpg" width="100" height="50" alt=""></li>
+                            <li>@Html.ActionLink(" TRANG CHỦ ", "Index", "Home", null, new { @class = "MauchuMenu" })</li>
+                            <li>@Html.ActionLink(" ĐIỀU CẦN BIẾT ", "About", "Home", null, new { @class = "MauchuMenu" })</li>
+                            <li>@Html.ActionLink(" HỎI ĐÁP ONILNE", "listAll", "Hoidap", null, new { @class = "MauchuMenu" })</li>
+                            <li>@Html.ActionLink(" TRUNG TÂM GẦN NHẤT", "Index", "Trungtamyte", null, new { @class = "MauchuMenu" })</li>
+                        </ul>
+                        @{
+                            if (u != null)
+                            {
+                            }
+                            else
+                            {
+                                <ul class="nav navbar-nav" style="margin-left:200px">
+                                    <li> @Html.ActionLink("Đăng kí", "Dangky", "Home", null, new { @class = "MauchuMenu" }) </li>
+                                    <li> @Html.ActionLink("Đăng nhập", "Dangnhap", "Home", null, new { @class = "MauchuMenu" })</li>
+                                </ul>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div id="viewport">
+                <div id="sidebar">
+                    <header>
+                        <a style="color:orangered">HI: @u.TaiKhoan </a>
+                        <a href="@Url.Action("Dangxuat","Home")"> <i class="fas fa-sign-out-alt"></i></a>
+                    </header>
+                    <ul class="nav">
+                        <li>
+                            <a href="@Url.Action("Details", "Nguoidung", new { id = u.IDNguoiDung })"> Hồ sơ cá nhân</a>
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("Bệnh án", "Index", "NguoiDungs")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Danh sách bác sĩ", "Index", "Bacsi")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Đặt lịch khám Video", "Index", "Lichkham")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Lich Hẹn khám", "Chitiet", "Lichkham")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Khai báo y tế", "Index", "TinTucs")
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Hoidap", new { id = u.IDNguoiDung  })">
+                                Câu hỏi tư vấn
+                            </a>
+                        <li>
+                            <a href="@Url.Action("Index", "Trungtamyte", new { id = u.IDNguoiDung  })">
+                                Tìm kiếm địa điểm hỗ trợ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="content" class="clearfix">
+                    <div class="container body-content">
+                        @RenderBody()
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="clearfix">
+                <center><p>&copy; @DateTime.Now.Year - CườngIT</p></center>
+            </div>
+
+
+        }
+        else
+        {
+            <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#626BB6">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li> <img src="~/Common/images/YTE.jpg" width="100" height="50" alt=""></li>
+                            <li>@Html.ActionLink(" TRANG CHỦ ", "Index", "Home", null, new { @class = "MauchuMenu" })</li>
+                            <li>@Html.ActionLink(" ĐIỀU CẦN BIẾT ", "About", "Home", null, new { @class = "MauchuMenu" })</li>
+                            <li>@Html.ActionLink(" HỎI ĐÁP ONILNE", "ListAll", "Hoidap", null, new { @class = "MauchuMenu" })</li>
+                            <li>@Html.ActionLink(" TRUNG TÂM GẦN NHẤT", "Index", "Trungtamyte", null, new { @class = "MauchuMenu" })</li>
+                        </ul>
+                        @{
+                            if (userBS != null)
+                            {
+                            }
+                            else
+                            {
+                                <ul class="nav navbar-nav" style="margin-left:200px">
+                                    <li> @Html.ActionLink("Đăng kí", "Dangky", "Home", null, new { @class = "MauchuMenu" }) </li>
+                                    <li> @Html.ActionLink("Đăng nhập", "Dangnhap", "Home", null, new { @class = "MauchuMenu" })</li>
+                                </ul>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div id="viewport">
+                <div id="sidebar">
+                    <header>
+                        <a style="color:orangered">HI: @userBS.TaiKhoan </a>
+                        @Html.ActionLink("Đăng xuất", "DangXuatBs", "Home", null, new { @class = "MauchuMenu" })
+                    </header>
+                    <ul class="nav">
+
+                        <li>
+                            @Html.ActionLink("Quản lý hỏi đáp", "Quanlyhoidap", "Bacsi")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Lịch khám Video", "Quanlyhoidap", "Lichkham")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Lich Hẹn khám", "Chitiet", "Lichkham")
+                        </li>
+                    </ul>
+                </div>
+                <div id="content" class="clearfix">
+                    <div class="container body-content">
+                        @RenderBody()
+                        <hr />
+                        <footer class="clearfix">
+                            <p>&copy; @DateTime.Now.Year - CườngIT</p>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

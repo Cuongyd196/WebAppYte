@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WebAppYte.Models.QuanTri>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Khoa.TenKhoa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaiKhoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VaiTro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThongTinBacSi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrinhDo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhBia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Khoa.TenKhoa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaiKhoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MatKhau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VaiTro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThongTinBacSi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrinhDo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnhBia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDQuanTri }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDQuanTri }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDQuanTri })
+        </td>
+    </tr>
+}
+
+</table>

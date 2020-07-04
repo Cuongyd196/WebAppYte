@@ -81,3 +81,7 @@ E:\Code\Web\WebAppYte\WebAppYte\bin\EntityFramework.SqlServer.dll
 E:\Code\Web\WebAppYte\WebAppYte\bin\EntityFramework.xml
 E:\Code\Web\WebAppYte\WebAppYte\bin\EntityFramework.SqlServer.xml
 E:\Code\Web\WebAppYte\WebAppYte\obj\Debug\WebAppYte.csprojAssemblyReference.cache
+E:\Code\Web\WebAppYte\WebAppYte\bin\PagedList.dll
+E:\Code\Web\WebAppYte\WebAppYte\bin\PagedList.Mvc.dll
+E:\Code\Web\WebAppYte\WebAppYte\bin\PagedList.xml
+E:\Code\Web\WebAppYte\WebAppYte\bin\PagedList.Mvc.xml

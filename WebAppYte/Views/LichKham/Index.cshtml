@@ -6,14 +6,15 @@
 
 <h2>Index</h2>
 
+
 <div id="calendar"> </div>
 @*<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.min.css" rel="stylesheet" media="print" />*@
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.min.css" rel="stylesheet" media="print" />*@
 @section Scripts{
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/gcal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>*@
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>  *@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.0.1/main.min.js"></script>
- 
+
 
     <script>
 
@@ -39,14 +40,14 @@
                     callback(events);
                 },
                 error: function (error) {
-                    alert('fail')
+                    alert('fail');
                 }
             })
 
             function callback(events) {
                 $('#calendar').fullCalendar({
                     theme: true,
-                    timeFormat:'h(:mm)a',
+                    timeFormat: 'h(:mm)a',
                     header:
                     {
                         left: 'prev,next today',
@@ -56,11 +57,11 @@
 
                     //defaultView: 'agendaDay',
                     editable: false,
-                    events: "/LichKham/GetEvents"
+                    events: events
                 });
 
             }
-           
+
         });
 
     </script>

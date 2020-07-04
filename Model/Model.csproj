@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\SolieucovidDao.cs" />
     <Compile Include="EF\LichKham.cs" />
     <Compile Include="EF\MyModel.cs" />
     <Compile Include="EF\Solieucovid.cs" />
@@ -57,7 +58,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dao\" />
+    <ProjectReference Include="..\WebAppYte\WebAppYte.csproj">
+      <Project>{1c67ba02-1baa-44f7-860e-dc8ec5d233b1}</Project>
+      <Name>WebAppYte</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

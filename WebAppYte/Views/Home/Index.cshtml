@@ -1,33 +1,95 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@model IEnumerable<WebAppYte.Models.Solieucovid>
+<style type="text/css">
+    th{
+        text-align:center;
+    }
+    td {
+        text-align: center;
+    }
+
+</style>
 
 <div class="jumbotron">
-    <h1> Bác sĩ Online</h1>
     <p class="lead">
-        Hãy chăm sóc sức khỏe bản thân ngay từ bây giờ.
-    </p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+            Hãy chăm sóc sức khỏe bản thân.
+        </p>
+    <img class="img-responsive" src="~/Common/images/bs.jpg" />
+    <br />
+    <p style="float:right"><a href="https://asp.net" class="btn btn-primary btn-lg">Đặt lịch khám ngay &raquo;</a></p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Bản tin Covid</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div class="row"  >
+    <div class="col-md-8" style="border:1px solid red">
+        <h2>
+            Bản tin Covid
+            <a href="https://icon-library.net/icon/new-icon-gif-2.html" title="New Icon Gif #132152"><img src="https://icon-library.net//images/new-icon-gif/new-icon-gif-2.jpg" width="50" /></a>
+        </h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quocgia)
+                </th>
+                <th class="bg-danger">
+                    @Html.DisplayNameFor(model => model.Socanhiem)
+                </th>
+                <th class="bg-warning">
+                    @Html.DisplayNameFor(model => model.Dangdieutri)
+                </th>
+                <th class="bg-success">
+                    @Html.DisplayNameFor(model => model.Khoi)
+                </th>
+                <th class="bg-info">
+                    @Html.DisplayNameFor(model => model.Tuvong)
+                </th>
+
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <b>@Html.DisplayFor(modelItem => item.Quocgia)</b>
+                    </td>
+                    <td style="color:red">
+                        @Html.DisplayFor(modelItem => item.Socanhiem)
+                    </td>
+                    <td style="color: gold">
+                        @Html.DisplayFor(modelItem => item.Dangdieutri)
+                    </td>
+                    <td style="color: aqua">
+                        @Html.DisplayFor(modelItem => item.Khoi)
+                    </td>
+                    <td class="text-info">
+                        @Html.DisplayFor(modelItem => item.Tuvong)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
     </div>
-    <div class="col-md-4">
-        <h2>Phòng tránh</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <div class="col-md-4" style="border:1px solid red">
+        <center>
+            <h2> Tiếp nhận phản ánh </h2>
+            <img class="img-responsive" src="~/images/images/duongaynong.png" width="270" height="200" />
+        </center>
     </div>
-    <div class="col-md-4">
-        <h2>Tin mới</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
 </div>
+<br />
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        @Html.Action("TintucNewPartial", "Home")
+    </div>
+    <div class="col-md-4">
+        @Html.Action("TintucHotPartial", "Home")
+    </div>
+
+</div>
+

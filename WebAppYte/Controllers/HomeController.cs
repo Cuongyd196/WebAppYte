@@ -3,28 +3,117 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebAppYte.Models;
 
 namespace WebAppYte.Controllers
 {
     public class HomeController : Controller
     {
+        modelWeb db = new modelWeb();
         public ActionResult Index()
         {
+            var solieu = db.Solieucovids.ToList();
+            return View(solieu);
+        }
+        public ActionResult Trangchu()
+        {
+            return View();
+
+        }
+        [HttpGet]
+        public ActionResult Dangky()
+        {
+            ViewBag.IDGioiTinh = new SelectList(db.GioiTinhs, "IDGioiTinh", "GioiTinh1");
+            ViewBag.IDTinh = new SelectList(db.TinhThanhs, "IDTinh", "TenTinh");
             return View();
         }
 
-        public ActionResult About()
+        // POST: Admin/NguoiDungs/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Dangky([Bind(Include = "IDNguoiDung,HoTen,Email,DienThoai,TaiKhoan,MatKhau,IDGioiTinh,DiaChiCuThe,SoCMND,IDTinh,NhomMau,ThongTinKhac")] NguoiDung nguoiDung)
         {
-            ViewBag.Message = "Your application description page.";
+            if (ModelState.IsValid)
+            {
+                db.NguoiDungs.Add(nguoiDung);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
+            ViewBag.IDGioiTinh = new SelectList(db.GioiTinhs, "IDGioiTinh", "GioiTinh1", nguoiDung.IDGioiTinh);
+            ViewBag.IDTinh = new SelectList(db.TinhThanhs, "IDTinh", "TenTinh", nguoiDung.IDTinh);
+            return View(nguoiDung);
+        }
+        [HttpGet]
+        public ActionResult Dangnhap()
+        {
             return View();
         }
-
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Dangnhap(FormCollection Dangnhap)
         {
-            ViewBag.Message = "Your contact page.";
+            string tk = Dangnhap["TaiKhoan"].ToString();
+            string mk = Dangnhap["MatKhau"].ToString();
+            var islogin = db.NguoiDungs.SingleOrDefault(x => x.TaiKhoan.Equals(tk) && x.MatKhau.Equals(mk));
+            var isloginAdmin = db.QuanTris.SingleOrDefault(x => x.TaiKhoan.Equals(tk) && x.MatKhau.Equals(mk));
+            if (islogin != null)
+            {
+                Session["user"] = islogin;
+                return RedirectToAction("Trangchu", "Home");
+            }
+            else if (isloginAdmin != null && isloginAdmin.VaiTro == 1)
+            {
+                Session["userAdmin"] = isloginAdmin;
+                return RedirectToAction("Index", "Admin/HomeAdmin");
+            }
+            else if (isloginAdmin != null && isloginAdmin.VaiTro==2)
+            {
+                 Session["userBS"] = isloginAdmin;
+                 return RedirectToAction("Trangchu", "Home");
+            }
+            else
+            {
+                ViewBag.Fail = "Tài khoản hoặc mật khẩu không chính xác.";
+                return View("Dangnhap");
+            }
 
-            return View();
+        }
+        public ActionResult DangXuat()
+        {
+            Session["user"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult DangXuatBs()
+        {
+            Session["userBS"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult TintucNewPartial()
+        {
+            String n = "new";
+            var tintuc = db.Tintucs.Where(x => x.TheLoai.Equals(n));
+            return PartialView(tintuc);
+
+        }
+        public ActionResult TintucHotPartial()
+        {
+            String h = "hot";
+            var tintuc = db.Tintucs.Where(x => x.TheLoai.Equals(h));
+            return PartialView(tintuc);
+
+        }
+        public ActionResult Xemchitiet(int IDTintuc = 0)
+        {
+            var chitiet = db.Tintucs.SingleOrDefault(n => n.IDTintuc == IDTintuc);
+            if (chitiet == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(chitiet);
         }
     }
 }
