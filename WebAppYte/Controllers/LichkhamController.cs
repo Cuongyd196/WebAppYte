@@ -17,7 +17,36 @@ namespace WebAppYte.Controllers
         // GET: Lichkham
         public ActionResult Index(int? id , int? page)
         {
-            var lichKhams = db.LichKhams.Include(l => l.NguoiDung).Include(l => l.QuanTri).Where(h => h.IDNguoiDung == id).ToList();
+            var lichKhams = db.LichKhams.Include(l => l.NguoiDung).Include(l => l.QuanTri).
+                Where(h => h.IDNguoiDung == id).OrderByDescending(x=>x.BatDau).ThenBy(x=>x.IDLichKham);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            ViewBag.id = id;
+            return View(lichKhams.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult Dangxuly(int? id, int? page)
+        {
+            var lichKhams = db.LichKhams.Include(l => l.NguoiDung).Include(l => l.QuanTri).
+                Where(h => h.IDNguoiDung == id && h.TrangThai==0).OrderByDescending(x => x.BatDau).ThenBy(x => x.IDLichKham);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            ViewBag.id = id;
+            return View(lichKhams.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult Daxacnhan(int? id, int? page)
+        {
+            var lichKhams = db.LichKhams.Include(l => l.NguoiDung).Include(l => l.QuanTri).
+                Where(h => h.IDNguoiDung == id && h.TrangThai == 1).OrderByDescending(x => x.BatDau).ThenBy(x => x.IDLichKham);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            ViewBag.id = id;
+            return View(lichKhams.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult Datuvanxong(int? id, int? page)
+        {
+            var lichKhams = db.LichKhams.Include(l => l.NguoiDung).Include(l => l.QuanTri).
+                Where(h => h.IDNguoiDung == id && h.TrangThai == 2).OrderByDescending(x => x.BatDau).ThenBy(x => x.IDLichKham);
             int pageSize = 3;
             int pageNumber = (page ?? 1);
             ViewBag.id = id;
@@ -126,6 +155,33 @@ namespace WebAppYte.Controllers
             db.LichKhams.Remove(lichKham);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public JsonResult Lichdangluoi()
+        {
+            //db.Configuration.ProxyCreationEnabled = false;
+            List<LichKham> l = db.LichKhams.ToList();
+            // events = db.LichKhams.ToList();
+            var events = l.Select(ll => new
+            {
+                id = ll.IDLichKham,
+                title = ll.ChuDe,
+                start = ll.BatDau,
+                end = ll.KetThuc,
+            });
+            Console.WriteLine(events);
+            return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+        public ActionResult lichhen()
+        {
+            return View();
+
+        }
+        private static DateTime ConvertFromUnixTimestamp(double timestamp)
+        {
+            var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return origin.AddSeconds(timestamp);
         }
 
         protected override void Dispose(bool disposing)

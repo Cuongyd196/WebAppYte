@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Traloicauhoi";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var i = Model.IDNguoiDung;
 }
 
 <h2>Trả lời câu hỏi</h2>
@@ -28,8 +29,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TraLoi, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <textarea cols="70" htmlAttributes="{ class = form-control }" id="TraLoi" name="TraLoi" rows="10">
-            </textarea>
+                <textarea cols="70" htmlAttributes="{ class = form-control }" id="TraLoi" name="TraLoi" rows="10"></textarea>
                 @Html.ValidationMessageFor(model => model.CauHoi, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -38,7 +38,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IDNguoiDung, "Người  hỏi", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IDNguoiDung", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                @*<select class="form-control" id="IDNguoiDung" name="IDNguoiDung">
+                    <option value="@Model.IDNguoiDung">ViewBag.IDNguoiDung</option>
+                </select>*@
+                @Html.DropDownList("IDNguoiDung", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IDNguoiDung, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -77,7 +80,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Trả lời" class="btn btn-success" />
             </div>
         </div>
     </div>

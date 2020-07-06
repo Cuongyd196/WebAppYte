@@ -4,13 +4,13 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAd.cshtml";
 }
-
-<h2>Index</h2>
+<br />
+    <h2>QUẢN LÝ BÁC SĨ</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Khoa.TenKhoa)

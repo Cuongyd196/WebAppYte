@@ -12,7 +12,7 @@
 @{
     if (u == null && userBS == null)
     {
-        <button>
+        <button class="btn-success">
             @Html.ActionLink("Đăng nhập để gửi câu hỏi cho bác sĩ. ", "Dangnhap", "Home", null, new { @class = "MauchuMenu" })
         </button>
     }
@@ -22,7 +22,7 @@
 <div class="col-md-8">
     @foreach (var item in Model)
     {
-        <i>Người gửi : <b>@item.NguoiDung.HoTen</b> &nbsp; <i class="fas fa-clock"></i>&nbsp;@item.NgayGui</i>
+        <i>Người gửi : <b>@item.NguoiDung.HoTen</b> &nbsp; <i class="fas fa-clock"></i>&nbsp;@item.NgayGui.Value.ToString("dd/MM/yyyy HH:mm:ss")</i>
         <h4 class="text-info">Câu hỏi:</h4>
         <h5 class="text-primary">@Html.DisplayFor(modelItem => item.CauHoi)</h5>
         <h4 class="text-warning">Trả lời : </h4>

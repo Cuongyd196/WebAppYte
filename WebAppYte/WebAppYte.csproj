@@ -1166,6 +1166,7 @@
     <Content Include="Common\Icon\webfonts\fa-regular-400.svg" />
     <Content Include="Common\Icon\webfonts\fa-solid-900.svg" />
     <Content Include="Common\images\bs.jpg" />
+    <Content Include="Common\images\map.jpg" />
     <Content Include="Common\images\zoom.png" />
     <Content Include="Common\layoutAdmin\css\styles.css" />
     <Content Include="Common\layoutAdmin\js\scripts.js" />
@@ -1188,6 +1189,9 @@
     <Content Include="images\images\10loi.jpg" />
     <Content Include="images\images\avatar.jpg" />
     <Content Include="images\images\bando.png" />
+    <Content Include="images\images\corona.jpg" />
+    <Content Include="images\images\corona2.jpg" />
+    <Content Include="images\images\covid.jpg" />
     <Content Include="images\images\duongaynong.png" />
     <Content Include="images\images\phongtranh.jpg" />
     <Content Include="images\images\sk.jpg" />
@@ -1257,7 +1261,7 @@
     <Content Include="Areas\Admin\Views\TrungTamGanNhats\Details.cshtml" />
     <Content Include="Areas\Admin\Views\TrungTamGanNhats\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\TrungTamGanNhats\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_LayoutAd.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdd.cshtml" />
     <Content Include="Areas\Admin\Views\Khoas\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Khoas\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Khoas\Details.cshtml" />
@@ -1271,7 +1275,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAd.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="images\images\v.png" />
+    <Content Include="images\images\zoom.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\fullcalendar.js" />
@@ -1283,6 +1290,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1410,6 +1419,11 @@
     <Content Include="Views\Bacsi\Edit.cshtml" />
     <Content Include="Views\Bacsi\Quanlyhoidap.cshtml" />
     <Content Include="Views\Bacsi\Traloicauhoi.cshtml" />
+    <Content Include="Views\Bacsi\Kiemtralichhen.cshtml" />
+    <Content Include="Views\Bacsi\Xacnhanlichhen.cshtml" />
+    <Content Include="Views\Hoidap\Cauhoichoxuly.cshtml" />
+    <Content Include="Views\Bacsi\Lichdangcho.cshtml" />
+    <Content Include="Views\Bacsi\Lichdaxacnhan.cshtml" />
     <None Include="Views\Hoidap\Details.cshtml" />
     <Content Include="Views\Hoidap\Edit.cshtml" />
     <Content Include="Views\Hoidap\Index.cshtml" />
@@ -1422,6 +1436,11 @@
     <Content Include="Views\LichKham\Delete.cshtml" />
     <Content Include="Views\LichKham\Details.cshtml" />
     <Content Include="Views\LichKham\Edit.cshtml" />
+    <Content Include="Views\LichKham\Lichdangluoi.cshtml" />
+    <Content Include="Views\LichKham\lichhen.cshtml" />
+    <Content Include="Views\LichKham\Dangxuly.cshtml" />
+    <Content Include="Views\LichKham\Daxacnhan.cshtml" />
+    <Content Include="Views\LichKham\Datuvanxong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

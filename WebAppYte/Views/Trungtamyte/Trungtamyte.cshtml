@@ -18,7 +18,7 @@
 </style>
 
 <br />
-<h3>
+<h2>
     <i>Danh sách trung tâm và bệnh viện hỗ trợ dịch COVID gần nhất</i>
 
     @foreach (var i in Model)
@@ -26,7 +26,7 @@
         @Html.DisplayFor(modelItem => i.TinhThanh.TenTinh)
         break;
     }
-</h3>
+</h2>
 <hr />
 <table class="table">
     <tr>
@@ -39,10 +39,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TenTrungTam)
+                <h3> @Html.DisplayFor(modelItem => item.TenTrungTam)</h3>
             </td>
             <td>
-                <button class="btn-facebook"> @Html.ActionLink("Xem chi tiết", "Details", new { id = item.IDTrungTam })</button>
+                <h3><button class="btn-facebook"> @Html.ActionLink("Xem chi tiết", "Details", new { id = item.IDTrungTam })</button></h3>
             </td>
         </tr>
     }

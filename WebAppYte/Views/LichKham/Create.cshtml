@@ -6,106 +6,62 @@
     var u = Session["user"] as WebAppYte.Models.NguoiDung;
 }
 
+<br />
+<h2 style="color:orangered">Đặt lịch hẹn khám</h2>
 
-<h2>Đặt lịch hẹn khám</h2>
-<hr />
-@using (Html.BeginForm()) 
+
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+
+    <div class="form-horizontal" style="float:left">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.IDNguoiDung, "Người đặt lịch khám", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                 <select class="form-control" id="IDNguoiDung" name="IDNguoiDung"><option value="@u.IDNguoiDung">@u.HoTen</option>
-                 </select>
+            @Html.LabelFor(model => model.IDNguoiDung, "Người đặt lịch khám", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                <select class="form-control" id="IDNguoiDung" name="IDNguoiDung">
+                    <option value="@u.IDNguoiDung">@u.HoTen</option>
+                </select>
                 @Html.ValidationMessageFor(model => model.IDNguoiDung, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IDQuanTri, "Đặt lịch với bác sĩ", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.IDQuanTri, "Đặt lịch với bác sĩ", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
                 @Html.DropDownList("IDQuanTri", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IDQuanTri, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.ChuDe," Lý do đặt lịch", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <textarea cols="50" data-val="true" data-val-length="The field Chủ đề must be a string with a maximum length of 100." data-val-length-max="100" htmlAttributes="{ class = form-control }" 
+            @Html.LabelFor(model => model.ChuDe, " Lý do đặt lịch", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                <textarea cols="50" data-val="true" data-val-length="The field Chủ đề must be a string with a maximum length of 100." data-val-length-max="100" htmlAttributes="{ class = form-control }"
                           id="ChuDe" name="ChuDe" rows="10"></textarea>
                 @Html.ValidationMessageFor(model => model.ChuDe, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.BatDau, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BatDau, new { htmlAttributes = new { @class = "form-control"} })
-                @Html.ValidationMessageFor(model => model.BatDau, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
         <div class="form-group">
-            <label class="control-label col-md-2" for="BatDau">Bắt đầu</label>
-            <div class="col-md-10">
+            <label class="control-label col-md-6" for="BatDau">Bắt đầu</label>
+            <div class="col-md-6">
                 <input class="form-control text-box single-line" data-val="true" data-val-date="The field Bắt đầu must be a date." id="BatDau" name="BatDau" type="datetime-local" value="" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="BatDau" data-valmsg-replace="true"></span>
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.KetThuc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.KetThuc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.KetThuc, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.TrangThai, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TrangThai, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.ZoomInfo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ZoomInfo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ZoomInfo, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.KetQuaKham, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.KetQuaKham, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.KetQuaKham, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-
-
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Đặt lịch ngay" class="btn btn-default" />
+            <div class="col-md-offset-6 col-md-6">
+                <input type="submit" value="Đặt lịch ngay" class="btn btn-success" />
             </div>
         </div>
+
+
     </div>
+    <div>
+        <img src="~/images/images/covid.jpg" style="float:right" />
+    </div>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

@@ -26,7 +26,7 @@
         [Display(Name = "Mô tả")]
         public string MoTa { get; set; }
 
-        [Column(TypeName = "smalldatetime")]
+        [Column(TypeName = "datetime")]
         [Display(Name = "Bắt đầu")]
         public DateTime? BatDau { get; set; }
 
@@ -36,11 +36,11 @@
         [Display(Name = "Trạng thái")]
         public int? TrangThai { get; set; }
 
-        [StringLength(10)]
+        [StringLength(100)]
         [Display(Name = "Link Zoom")]
         public string ZoomInfo { get; set; }
 
-        [StringLength(10)]
+        [StringLength(200)]
         [Display(Name = "Kết quả khám")]
         public string KetQuaKham { get; set; }
         [Display(Name = "Người dùng")]

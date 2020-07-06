@@ -15,11 +15,6 @@ namespace WebAppYte.Controllers
             var solieu = db.Solieucovids.ToList();
             return View(solieu);
         }
-        public ActionResult Index2()
-        {
-            var solieu = db.Solieucovids.ToList();
-            return View(solieu);
-        }
         public ActionResult Trangchu()
         {
             return View();
@@ -44,7 +39,8 @@ namespace WebAppYte.Controllers
             {
                 db.NguoiDungs.Add(nguoiDung);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Session["nguoidung"] = nguoiDung;
+                return RedirectToAction("Dangnhap");
             }
 
             ViewBag.IDGioiTinh = new SelectList(db.GioiTinhs, "IDGioiTinh", "GioiTinh1", nguoiDung.IDGioiTinh);
@@ -66,12 +62,12 @@ namespace WebAppYte.Controllers
             if (islogin != null)
             {
                 Session["user"] = islogin;
-                return RedirectToAction("Trangchu", "Home");
+                return RedirectToAction("Details", "Nguoidung", new { id = @islogin.IDNguoiDung });
             }
             else if (isloginAdmin != null && isloginAdmin.VaiTro == 1)
             {
                 Session["userAdmin"] = isloginAdmin;
-                return RedirectToAction("Index", "Admin/HomeAdmin");
+                return RedirectToAction("QuanTris", "Admin");
             }
             else if (isloginAdmin != null && isloginAdmin.VaiTro==2)
             {

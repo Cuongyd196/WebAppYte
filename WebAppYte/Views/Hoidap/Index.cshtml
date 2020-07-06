@@ -5,13 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2> Câu hỏi của bạn </h2>
-<button class="btn-default">@Html.ActionLink("Gửi câu hỏi mới", "Create", new { id = @ViewBag.id })</button>
+<h3 style="color:orangered"> <b>Câu hỏi của bạn</b> </h3>
+<h3><button class="btn-default">@Html.ActionLink("Gửi câu hỏi mới", "Create", new { id = @ViewBag.id })</button></h3>
 <hr />
 <div class="col-md-8">
     @foreach (var item in Model)
     {
-        <i>Người gửi : <b>@item.NguoiDung.HoTen</b> &nbsp; <i class="fas fa-clock"></i>&nbsp;@item.NgayGui</i>
+        <i>Người gửi : <b>@item.NguoiDung.HoTen</b> &nbsp; <i class="fas fa-clock"></i>&nbsp;@item.NgayGui.Value.ToString("dd/MM/yyyy HH:mm:ss")</i>
         <h4 class="text-info">Câu hỏi:</h4>
         <h5 class="text-primary">@Html.DisplayFor(modelItem => item.CauHoi)</h5>
         <h4 class="text-warning">Trả lời : </h4>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="col-md-4">
-    <h4> Bản đồ phân bố dịch</h4>
+    <h3 style="color:red"> Bản đồ phân bố dịch</h3>
     <img src="~/images/images/bando.png" class="img-responsive" />
 
 </div>

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/Common/css/hoso.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <br />
 <h2>Hồ sơ cá nhân</h2>
@@ -26,6 +26,10 @@
             Số CMND : @Html.DisplayFor(model => model.SoCMND)
             <br />
             Nhóm máu : @Html.DisplayFor(model => model.NhomMau)
+            <br />
+            <button class="btn-warning">
+                @Html.ActionLink("Cập nhật", "Edit", new { id = Model.IDNguoiDung })
+            </button>
         </div>
     </div>
     <div class="col-md-6">
@@ -51,12 +55,18 @@
             </span> &nbsp;
             Thông tin khác : @Html.DisplayFor(model => model.ThongTinKhac)
             <br />
-            <button class="btn-warning">
-                @Html.ActionLink("Cập nhật", "Edit", new { id = Model.IDNguoiDung })
-            </button>
+            <br />
 
+            <br />
         </div>
 
-
     </div>
+
 </div>
+<br />
+<center>
+    <br />
+    <h3> <a href="@Url.Action("Index", "LichKham")">ĐẶT LỊCH TƯ VẤN VIDEO</a></h3>
+
+    <h3><a href="@Url.Action("Index", "Hoidap", new { id = @ViewBag.id })">GỬI CÂU HỎI CHO BÁC SĨ</a></h3>
+</center>

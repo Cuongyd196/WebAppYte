@@ -17,7 +17,8 @@ namespace WebAppYte.Controllers
         // GET: Hoidap
         public ActionResult Index(int ? id, int? page)
         {
-            var hoiDaps = db.HoiDaps.Include(h => h.NguoiDung).Include(h => h.QuanTri).Where(h => h.IDNguoiDung == id && h.TrangThai == 1).ToList();
+            var hoiDaps = db.HoiDaps.Include(h => h.NguoiDung).Include(h => h.QuanTri).Where(h => h.IDNguoiDung == id && h.TrangThai == 1)
+                .OrderByDescending(x => x.NgayGui).ThenBy(x => x.IDHoidap).ToList();
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             ViewBag.id = id;
@@ -27,11 +28,23 @@ namespace WebAppYte.Controllers
         public ActionResult ListAll(int? page)
         {
             if (page == null) page = 1;
-            var hoiDaps = db.HoiDaps.Include(h => h.NguoiDung).Include(h => h.QuanTri).Where(n=>n.TrangThai==1).ToList();
+            var hoiDaps = db.HoiDaps.Include(h => h.NguoiDung).Include(h => h.QuanTri).Where(n=>n.TrangThai==1)
+                .OrderByDescending(x => x.NgayGui).ThenBy(x => x.IDHoidap).ToList();
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(hoiDaps.ToPagedList(pageNumber, pageSize));
         }
+
+        public ActionResult Cauhoichoxuly(int? id, int? page)
+        {
+            var hoiDaps = db.HoiDaps.Include(h => h.NguoiDung).Include(h => h.QuanTri).Where(h => h.IDNguoiDung == id && h.TrangThai == 0)
+                .OrderByDescending(x => x.NgayGui).ThenBy(x => x.IDHoidap).ToList();
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            ViewBag.id = id;
+            return View(hoiDaps.ToPagedList(pageNumber, pageSize));
+        }
+
 
         // GET: Hoidap/Details/5
         public ActionResult Details(int? id)
@@ -90,8 +103,8 @@ namespace WebAppYte.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IDNguoiDung = new SelectList(db.NguoiDungs, "IDNguoiDung", "HoTen", hoiDap.IDNguoiDung);
-            ViewBag.IDQuanTri = new SelectList(db.QuanTris, "IDQuanTri", "TaiKhoan", hoiDap.IDQuanTri);
+            ViewBag.IDNguoiDung = new SelectList(db.NguoiDungs.Where(x => x.IDNguoiDung == hoiDap.IDNguoiDung), "IDNguoiDung", "HoTen", hoiDap.IDNguoiDung);
+            ViewBag.IDQuanTri = new SelectList(db.QuanTris.Where(x => x.IDQuanTri == hoiDap.IDQuanTri), "IDQuanTri", "HoTen", hoiDap.IDQuanTri);
             return View(hoiDap);
         }
 

@@ -43,8 +43,9 @@
         [StringLength(50)]
         [Display(Name = " Ảnh bìa")]
         public string AnhBia { get; set; }
-
-
+        [StringLength(100)]
+        [Display(Name = " Tài khoản ZOOM")]
+        public string ThongtinZoom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoiDap> HoiDaps { get; set; }
 

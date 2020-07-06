@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Dangnhap";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var nd= Session["nguoidung"] as WebAppYte.Models.NguoiDung;
 }
 <style type="text/css">
     input#MatKhau {
@@ -19,19 +20,31 @@
 
 <br />
 
-<center>
-    <div class="col-md-12">
 
-        @using (Html.BeginForm("Dangnhap", "Home", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
+<div class="col-md-12">
 
+    @using (Html.BeginForm("Dangnhap", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+    <center>
+        <div>
             <div class="form-horizontal">
-                <h2>  Đăng nhập tài khoản &nbsp; <i class="far fa-user"></i></h2>
+
+                @{
+                    if (nd == null)
+                    {
+                        <h2>  Đăng nhập tài khoản</h2>
+                    }
+                    else
+                    {
+                        <h3> Chúc mừng @nd.TaiKhoan đăng ký thành công. Đăng nhập ngay.</h3>
+                    }
+                }
+
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(model => model.TaiKhoan, htmlAttributes: new { @class = "" })
+                    <h4> @Html.LabelFor(model => model.TaiKhoan, htmlAttributes: new { @class = " " })</h4>
                     <div class="">
                         @Html.EditorFor(model => model.TaiKhoan, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
@@ -39,8 +52,8 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "" })
-                    <div>
+                    <h4>@Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "" })</h4>
+                    <div class="">
                         @Html.PasswordFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
                     </div>
@@ -48,20 +61,19 @@
                 <h5 class="h5fail">@ViewBag.Fail</h5>
 
                 <div class="form-group">
-                    <div class="">
+                    <div>
                         <input type="submit" value="Đăng nhập" class="btn btn-success" />
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="">
-                        Bạn chưa có tài khoản?  @Html.ActionLink("ĐĂNG KÝ NGAY", "Dangky")
-                        <br />
-                        Bạn quên mật khẩu ?  @Html.ActionLink("KHÔI PHỤC LẠI", "Dangnhap")
-
-                    </div>
+                <div>
+                    Bạn chưa có tài khoản?  @Html.ActionLink("ĐĂNG KÝ NGAY", "Dangky")
+                    <br />
+                    Bạn quên mật khẩu ?  @Html.ActionLink("KHÔI PHỤC LẠI", "Dangnhap")
                 </div>
-
             </div>
+
+        </div>
+    </center>
         }
 
 
@@ -69,5 +81,5 @@
 
  
 
-</center>
+
 
