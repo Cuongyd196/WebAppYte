@@ -3,7 +3,9 @@ Chủ đề 2 : Hỗ trợ y tế từ xa
 Sinh viên thực hiện : Nguyễn Văn Cường
 Lớp: K20B
 Mã SV: 1661030063
-Ngôn ngữ : .net
+Ngôn ngữ : Asp.net mvc, sql server.
+
+Video demo: https://youtu.be/3z0H2xfT_ck
 
 
 - Mô tả hoạt động website
